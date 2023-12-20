@@ -2,6 +2,8 @@
 #pragma once
 #include <iostream>
 #include <stdexcept>
+#include <string>
+#include <map>
 
 
 class TicTacToe {
@@ -12,11 +14,14 @@ class TicTacToe {
         // Print current state of the board
         void PrintBoard() const;
 
-        // Advances the board for the next recorded player
-        void UseTurn(char move);
+        // Advances the board for the next recorded player (returns false if space is already occupied)
+        bool UseTurn(std::string move, char curr_player_char);
 
-        // Get next player's character for board insertion
+        // Get next player's character for board insertion and advances the next_player_ variable
         char NextPlayerCharacter();
+
+        // Check if game has finihsed and is still valid
+        bool GameValid() const;
 
 
 
@@ -56,4 +61,23 @@ class TicTacToe {
                 - true  (1) -> Player 2's turn
         */
         bool next_player_ = false;
+
+
+
+        /*
+            Maps valid moves to the corresponding coordinates (stored in pair {row, col}) in the board_ 2d array
+            
+            ━━━━━━━━━━━━━
+            ┃ 1 ┃ 2 ┃ 3 ┃
+            ━━━━━━━━━━━━━
+            ┃ 4 ┃ 5 ┃ 6 ┃
+            ━━━━━━━━━━━━━
+            ┃ 7 ┃ 8 ┃ 9 ┃
+            ━━━━━━━━━━━━━
+            Ex:
+                "1" maps to row 0, col 0
+                "6" maps to row 1, col 2
+        
+        */
+       std::map<std::string, std::pair<unsigned int, unsigned int>> move_map_;
 };

@@ -8,6 +8,18 @@ TicTacToe::TicTacToe() {
             board_[i][j] = ' ';
         }
     }
+
+    // Initialize move map 
+    move_map_["1"] = std::pair<unsigned int, unsigned int>(0,0);
+    move_map_["2"] = std::pair<unsigned int, unsigned int>(0,1);
+    move_map_["3"] = std::pair<unsigned int, unsigned int>(0,2);
+    move_map_["4"] = std::pair<unsigned int, unsigned int>(1,0);
+    move_map_["5"] = std::pair<unsigned int, unsigned int>(1,1);
+    move_map_["6"] = std::pair<unsigned int, unsigned int>(1,2);
+    move_map_["7"] = std::pair<unsigned int, unsigned int>(2,0);
+    move_map_["8"] = std::pair<unsigned int, unsigned int>(2,1);
+    move_map_["9"] = std::pair<unsigned int, unsigned int>(2,2);
+
 }
 
 // Standard board print that includes visual of the current board
@@ -28,22 +40,29 @@ void TicTacToe::PrintBoard() const {
 
 
 
-void TicTacToe::UseTurn(char move) {                            // TODO
+bool TicTacToe::UseTurn(std::string move, char curr_player_char) {                            // TODO
     /*
         Check which position is the desired move
         to make sure it is available
             - if not available we throw 
     */
-    switch (move)
-    {
-    case '1':
-        if (board_[0][0] != ' ') throw std::invalid_argument("");
-        board_[0][0] = NextPlayerCharacter();
-        break;
+
+    // Invalid string
+    if (move_map_.find(move) == move_map_.end())
+        return false;
+
     
-    default:
-        break;
-    }
+    unsigned int move_row = move_map_[move].first;
+    unsigned int move_col = move_map_[move].second;
+
+    // Check for the space occupation
+    if (board_[move_row][move_col] != ' ')
+        return false; 
+
+    board_[move_row][move_col] = curr_player_char;
+
+    return true;
+
 }
 
 
@@ -57,3 +76,9 @@ char TicTacToe::NextPlayerCharacter() {
     next_player_ = true;            // Switch
     return 'X';  
 }
+
+
+bool TicTacToe::GameValid() const {
+    return valid_game_flag_;
+}
+
