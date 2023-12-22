@@ -20,6 +20,11 @@ TicTacToe::TicTacToe() {
     move_map_["8"] = std::pair<unsigned int, unsigned int>(2,1);
     move_map_["9"] = std::pair<unsigned int, unsigned int>(2,2);
 
+    // Initialize starting valid moves
+    valid_moves_ = {"1", "2", "3",
+                    "4", "5", "6",
+                    "7", "8", "9"};
+
 }
 
 // Standard board print that includes visual of the current board
@@ -59,7 +64,19 @@ bool TicTacToe::UseTurn(std::string move, char curr_player_char) {              
     if (board_[move_row][move_col] != ' ')
         return false; 
 
+    // Set character at position
     board_[move_row][move_col] = curr_player_char;
+
+    // Remove from valid spaces to for next turns
+    valid_moves_.erase(std::remove(valid_moves_.begin(), valid_moves_.end(), move), valid_moves_.end());
+
+
+    // Board has been filled up
+    if (valid_moves_.empty())
+        valid_game_flag_ = false;
+
+    // Eventually call a function like check for winner here
+    // CheckForWinner(); 
 
     return true;
 
@@ -81,4 +98,9 @@ char TicTacToe::NextPlayerCharacter() {
 bool TicTacToe::GameValid() const {
     return valid_game_flag_;
 }
+
+std::vector<std::string> TicTacToe::GetValidMoves() const {
+    return valid_moves_;
+}
+
 

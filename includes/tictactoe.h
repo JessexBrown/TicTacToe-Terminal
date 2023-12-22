@@ -4,6 +4,8 @@
 #include <stdexcept>
 #include <string>
 #include <map>
+#include <vector>
+#include <algorithm>
 
 
 class TicTacToe {
@@ -22,6 +24,9 @@ class TicTacToe {
 
         // Check if game has finihsed and is still valid
         bool GameValid() const;
+
+        // Retrieve the valid spaces that can still be played by the current user
+        std::vector<std::string> GetValidMoves() const;
 
 
 
@@ -80,4 +85,20 @@ class TicTacToe {
         
         */
        std::map<std::string, std::pair<unsigned int, unsigned int>> move_map_;
+
+
+       /*
+            ━━━━━━━━━━━━━
+            ┃ 1 ┃ 2 ┃ 3 ┃
+            ━━━━━━━━━━━━━
+            ┃ 4 ┃ 5 ┃ 6 ┃
+            ━━━━━━━━━━━━━
+            ┃ 7 ┃ 8 ┃ 9 ┃
+            ━━━━━━━━━━━━━
+
+            Starts with all values [1,9] and removes respective spaces from vector when
+            players move there
+       
+       */
+       std::vector<std::string> valid_moves_;
 };
