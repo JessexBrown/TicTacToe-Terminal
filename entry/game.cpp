@@ -54,7 +54,7 @@ int main() {
 
         // Valid character input check (Enter if bad input and leave if Good input is recieved)
         while (std::find(kValidMoves.begin(), kValidMoves.end(), player_move_input) == kValidMoves.end()) {
-            std::cout << RED << "------INVALID MOVE RECIEVED------" << RESET << std::endl;
+            test_game.PrintErrorMessage("INVALID");
             std::cout << YELLOW << "Please enter one of the valid move positions: " << valid_move_string << RESET << std::endl;
 
             // Reprompt player 
@@ -65,7 +65,6 @@ int main() {
 
         // Initiate a turn with gathered info 
         while (!test_game.UseTurn(player_move_input, curr_player_char)) {
-            std::cout << RED << "------SPACE ALREADY OCCUPIED------" << RESET << std::endl;
             std::cout << YELLOW << "Please enter one of the valid move positions: " << valid_move_string << RESET << std::endl;
 
             // Reprompt player 

@@ -8,6 +8,14 @@
 #include <algorithm>
 
 
+// ANSI color codes
+#define RESET   "\033[0m"
+#define RED     "\033[31m"
+#define GREEN   "\033[32m"
+#define YELLOW  "\033[33m"
+#define BLUE    "\033[34m"
+
+
 class TicTacToe {
     public:
         // Default Constructor
@@ -16,8 +24,11 @@ class TicTacToe {
         // Print current state of the board
         void PrintBoard() const;
 
+        // Printing error message function (Invalid move / Already occupied space)
+        void PrintErrorMessage(const std::string& msg_type);
+
         // Advances the board for the next recorded player (returns false if space is already occupied)
-        bool UseTurn(std::string move, char curr_player_char);
+        bool UseTurn(const std::string& move, char curr_player_char);
 
         // Get next player's character for board insertion and advances the next_player_ variable
         char NextPlayerCharacter();

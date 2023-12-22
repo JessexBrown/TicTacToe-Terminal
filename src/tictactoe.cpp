@@ -43,9 +43,23 @@ void TicTacToe::PrintBoard() const {
     }
 }
 
+// Printing error message function (Invalid move / Already occupied space)
+void TicTacToe::PrintErrorMessage(const std::string& msg_type) {
+    if (msg_type == "INVALID") {
+        std::cout << RED << "------INVALID MOVE RECIEVED------" << RESET << std::endl;
+        return;
+    }
+
+    if (msg_type == "OCCUPIED") {
+        std::cout << RED << "------SPACE ALREADY OCCUPIED------" << RESET << std::endl;
+        return; 
+    }
+}
 
 
-bool TicTacToe::UseTurn(std::string move, char curr_player_char) {                            // TODO
+
+
+bool TicTacToe::UseTurn(const std::string& move, char curr_player_char) {                   // TODO
     /*
         Check which position is the desired move
         to make sure it is available
@@ -53,16 +67,20 @@ bool TicTacToe::UseTurn(std::string move, char curr_player_char) {              
     */
 
     // Invalid string
-    if (move_map_.find(move) == move_map_.end())
+    if (move_map_.find(move) == move_map_.end()) {
+        PrintErrorMessage("INVALID");
         return false;
+    }
 
     
     unsigned int move_row = move_map_[move].first;
     unsigned int move_col = move_map_[move].second;
 
     // Check for the space occupation
-    if (board_[move_row][move_col] != ' ')
+    if (board_[move_row][move_col] != ' ') {
+        PrintErrorMessage("OCCUPIED");
         return false; 
+    }
 
     // Set character at position
     board_[move_row][move_col] = curr_player_char;
