@@ -3,6 +3,7 @@
 #include <algorithm>
 #include <string>
 
+
 // ANSI color codes
 #define RESET   "\033[0m"
 #define RED     "\033[31m"
@@ -12,15 +13,22 @@
 
 int main() {
 
-    TicTacToe test_game;
-    // Make function for printing out instructions 
-    // test_game.PrintBoard();
+    TicTacToe test_game; 
+    test_game.PrintInstructions();
+
+    std::cout << GREEN << "Are you ready to play? (Y/N): " << RESET;
+    std::string game_start_char;
+    std::cin >> game_start_char;
+    std::cout << std::endl;
+
+    if (game_start_char != "Y")
+        return 0;
 
     const std::vector<std::string> kValidMoves = {"1", "2", "3",
                                                 "4", "5", "6",
                                                 "7", "8", "9"};
 
-    // Game loop 
+    // Game loop //
     while (test_game.GameValid()) {
         test_game.PrintBoard();
 

@@ -21,10 +21,13 @@ class TicTacToe {
         // Default Constructor
         TicTacToe();
 
+        // Print TicTacToe instructions for users
+        void PrintInstructions() const;
+
         // Print current state of the board
         void PrintBoard() const;
 
-        // Printing error message function (Invalid move / Already occupied space)
+        // Print error message function (Invalid move / Already occupied space)
         void PrintErrorMessage(const std::string& msg_type);
 
         // Advances the board for the next recorded player (returns false if space is already occupied)

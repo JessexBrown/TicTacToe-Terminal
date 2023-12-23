@@ -27,6 +27,30 @@ TicTacToe::TicTacToe() {
 
 }
 
+
+
+// TicTacToe instruction print
+void TicTacToe::PrintInstructions() const {
+    std::cout << "--------------------------------------------------------------------------------------------------------" << std::endl;
+    std::cout << "                                                Welcome to TicTacToe!                                   " << std::endl;
+    std::cout << "        Guide                                                                                           " << std::endl;
+    std::cout << "    ━━━━━━━━━━━━━       A board has been given to the left to guide inputs into the terminal for each   " << std::endl;
+    std::cout << "    ┃ 1 ┃ 2 ┃ 3 ┃     player's move choice. Your game will end with a stalemate (board is filled with   " << std::endl;
+    std::cout << "    ━━━━━━━━━━━━━     no winner or player has gotten three of their pieces in a row.                    " << std::endl;
+    std::cout << "    ┃ 4 ┃ 5 ┃ 6 ┃                                                                                       " << std::endl;
+    std::cout << "    ━━━━━━━━━━━━━     Player 1 = X                                                                      " << std::endl;
+    std::cout << "    ┃ 7 ┃ 8 ┃ 9 ┃     Player 2 = O                                                                      " << std::endl;
+    std::cout << "    ━━━━━━━━━━━━━                                                                                       " << std::endl;
+    std::cout << "                        Invalid inputs are any inputs that are not a number on the given \"Guide\" board  " << std::endl;
+    std::cout << "                      or numbers from the \"Guide Board\" that have already been used by any player.      " << std::endl;
+    std::cout << "                                                                                                        " << std::endl;
+    std::cout << "                                                        Enjoy!                                          " << std::endl;
+    std::cout << "                                                                                    coded by Jesse Brown" << std::endl;
+    std::cout << "--------------------------------------------------------------------------------------------------------" << std::endl;
+
+}
+
+
 // Standard board print that includes visual of the current board
 void TicTacToe::PrintBoard() const {
     std::cout << "━━━━━━━━━━━━━" << std::endl;
