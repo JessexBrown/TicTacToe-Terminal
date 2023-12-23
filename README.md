@@ -1,5 +1,5 @@
 # TicTacToe-Enhanced
-Eextensions Download in Container:
+Extensions Downloaded in Container:
     - C/C++
     - Clang-Format
     - Clang-Format
