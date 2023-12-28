@@ -91,20 +91,8 @@ int main() {
     // Display final board
     test_game.PrintBoard();
 
-    // Display winning moves if any
-    std::vector<std::string> win_moves = test_game.GetWinningMoves();
-    if (!win_moves.empty()) {
-        std::cout << "Winning moves: ";
-        for (const std::string& win_move : win_moves) {
-            std::cout << win_move;
-            if (win_move == win_moves[win_moves.size() - 1])
-                break;
-            std::cout << ",";
-        }
-
-        std::cout << std::endl;
-
-    }
+    // Display winning moves
+    test_game.PrintWinningMoves();
 
     // Notify termination of game due to win 
     std::cout << GREEN << "Your game has finished" << RESET << std::endl;

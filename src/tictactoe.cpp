@@ -81,6 +81,23 @@ void TicTacToe::PrintErrorMessage(const std::string& msg_type) {
 }
 
 
+void TicTacToe::PrintWinningMoves() const {
+    // Display winning moves if any
+    if (!winning_moves_.empty()) {
+        std::cout << "Winning moves: ";
+        for (const std::string& win_move : winning_moves_) {
+            std::cout << win_move;
+            if (win_move == winning_moves_[winning_moves_.size() - 1])
+                break;
+            std::cout << ",";
+        }
+
+        std::cout << std::endl;
+    }
+}
+
+
+
 
 
 bool TicTacToe::UseTurn(const std::string& move, char curr_player_char) {                   // TODO
@@ -247,6 +264,3 @@ void TicTacToe::CheckBoardCols(char curr_player_char) {
     }
 }
 
-std::vector<std::string> TicTacToe::GetWinningMoves() const {
-    return winning_moves_;
-}

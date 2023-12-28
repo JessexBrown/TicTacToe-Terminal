@@ -30,6 +30,9 @@ class TicTacToe {
         // Print error message function (Invalid move / Already occupied space)
         void PrintErrorMessage(const std::string& msg_type);
 
+        // Print winning moves if there are ann in vector
+        void PrintWinningMoves() const;
+
         // Advances the board for the next recorded player (returns false if space is already occupied)
         bool UseTurn(const std::string& move, char curr_player_char);
 
@@ -49,11 +52,6 @@ class TicTacToe {
         void CheckBoardDiag(char curr_player_char);
         void CheckBoardRows(char curr_player_char);
         void CheckBoardCols(char curr_player_char);
-
-        // Get winning moves
-        std::vector<std::string> GetWinningMoves() const;
-
-
 
     private:
 
