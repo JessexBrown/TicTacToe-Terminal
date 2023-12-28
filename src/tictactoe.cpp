@@ -118,7 +118,7 @@ bool TicTacToe::UseTurn(const std::string& move, char curr_player_char) {       
         valid_game_flag_ = false;
 
     // Eventually call a function like check for winner here
-    // CheckForWinner(); 
+    CheckForWinner(curr_player_char); 
 
     return true;
 
@@ -146,3 +146,107 @@ std::vector<std::string> TicTacToe::GetValidMoves() const {
 }
 
 
+// TODO THIS //
+
+void TicTacToe::CheckForWinner(char curr_player_char) {
+    // Check all possible winning postions
+    CheckBoardDiag(curr_player_char);
+    CheckBoardRows(curr_player_char);
+    CheckBoardCols(curr_player_char);
+
+}
+
+// If winner : set valid game flag, record winning positions, 
+
+void TicTacToe::CheckBoardDiag(char curr_player_char) {
+    // Check LR Diag
+    if (board_[0][0] == curr_player_char && board_[1][1] == curr_player_char &&
+                                            board_[2][2] == curr_player_char) {
+        // Set win
+        valid_game_flag_ = false;
+        winning_moves_.push_back("1");
+        winning_moves_.push_back("5"); 
+        winning_moves_.push_back("9"); 
+
+    }
+
+    // Check RL Diag
+    if (board_[0][2] == curr_player_char && board_[1][1] == curr_player_char &&
+                                            board_[2][0] == curr_player_char) {
+        // Set win
+        valid_game_flag_ = false;
+        winning_moves_.push_back("3");
+        winning_moves_.push_back("5"); 
+        winning_moves_.push_back("7"); 
+
+    }
+
+}
+void TicTacToe::CheckBoardRows(char curr_player_char) {
+    for (unsigned int row = 0; row < board_rows_; ++row) {
+        
+        unsigned int char_matches = 0;
+        std::vector<std::string> match_vect;
+        for (unsigned int col = 0; col < board_cols_; ++col) {
+            if (board_[row][col] == curr_player_char) {
+                char_matches++;
+
+                // Find move in map
+                for (auto& i : move_map_) {
+                    if (i.second == std::pair<unsigned, unsigned>(row, col)) {
+                       match_vect.push_back(i.first);
+                        break; 
+                    }
+        
+                }
+
+            } else {
+                break;
+            }
+        }
+        // Check for 3 in row
+        if (char_matches == 3) {
+            valid_game_flag_ = false;
+            for (const std::string& move : match_vect) {
+                winning_moves_.push_back(move);
+            }
+
+        }
+    }
+}
+void TicTacToe::CheckBoardCols(char curr_player_char) {
+    for (unsigned int col = 0; col < board_cols_; ++col) {
+        
+        unsigned int char_matches = 0;
+        std::vector<std::string> match_vect;
+        for (unsigned int row = 0; row < board_rows_; ++row) {
+            if (board_[row][col] == curr_player_char) {
+                char_matches++;
+
+                // Find move in map
+                for (auto& i : move_map_) {
+                    if (i.second == std::pair<unsigned, unsigned>(row, col)) {
+                       match_vect.push_back(i.first);
+                        break; 
+                    }
+        
+                }
+
+            } else {
+                break;
+            }
+        }
+        // Check for 3 in row
+        if (char_matches == 3) {
+            valid_game_flag_ = false;
+            for (const std::string& move : match_vect) {
+                winning_moves_.push_back(move);
+            }
+
+        }
+    }
+}
+
+std::vector<std::string> TicTacToe::GetWinningMoves() const {
+    return winning_moves_;
+}

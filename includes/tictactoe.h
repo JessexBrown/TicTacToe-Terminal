@@ -42,6 +42,17 @@ class TicTacToe {
         // Retrieve the valid spaces that can still be played by the current user
         std::vector<std::string> GetValidMoves() const;
 
+        // Check for winner given last player turn
+        void CheckForWinner(char curr_player_char);
+
+        // Helper funcs for CheckForWinner()
+        void CheckBoardDiag(char curr_player_char);
+        void CheckBoardRows(char curr_player_char);
+        void CheckBoardCols(char curr_player_char);
+
+        // Get winning moves
+        std::vector<std::string> GetWinningMoves() const;
+
 
 
     private:
@@ -51,6 +62,9 @@ class TicTacToe {
                 width: 3    
                 height: 3
         */
+        unsigned int board_rows_ = 3;
+        unsigned int board_cols_ = 3;
+        
 
         /*
             Store the board as a 2d array of characters
@@ -115,4 +129,10 @@ class TicTacToe {
        
        */
        std::vector<std::string> valid_moves_;
+
+
+       /*
+            Winning move vector
+       */
+        std::vector<std::string> winning_moves_;
 };
