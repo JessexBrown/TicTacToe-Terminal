@@ -1,13 +1,4 @@
-# TicTacToe-Enhanced
-Extensions Downloaded in Container:
-    - C/C++
-    - Clang-Format
-    - Clang-Format
-    - GitLens — Git supercharged
-
-
-
-
+# TicTacToe-Terminal
 
 
 Run instructions:
