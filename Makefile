@@ -10,12 +10,13 @@ COMPILER_FLAGS = -w
 
 
 #OBJ_NAME specifies the name of our exectuable
+OBJ_DIR = bin
 OBJ_NAME = game
 
 
 #This is the target that compiles our executable
 all : $(OBJS)
-	$(CC) $(OBJS) $(COMPILER_FLAGS) $(LINKER_FLAGS) -o $(OBJ_NAME)
+	$(CC) $(OBJS) $(COMPILER_FLAGS) $(LINKER_FLAGS) -o $(OBJ_DIR)/$(OBJ_NAME)
 
 clean : 
-	rm $(OBJ_NAME)
+	rm $(OBJ_DIR)/$(OBJ_NAME)
