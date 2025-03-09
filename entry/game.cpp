@@ -2,6 +2,7 @@
 #include <iostream>
 #include <algorithm>
 #include <string>
+#include <cctype>
 
 
 // ANSI color codes
@@ -17,11 +18,11 @@ int main() {
     test_game.PrintInstructions();
 
     std::cout << GREEN << "Are you ready to play? (Y/N): " << RESET;
-    std::string game_start_char;
+    char game_start_char;
     std::cin >> game_start_char;
     std::cout << std::endl;
 
-    if (game_start_char != "Y")
+    if (tolower(game_start_char) != 'y')
         return 0;
 
     const std::vector<std::string> kValidMoves = {"1", "2", "3",

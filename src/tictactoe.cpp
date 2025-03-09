@@ -53,18 +53,26 @@ void TicTacToe::PrintInstructions() const {
 
 // Standard board print that includes visual of the current board
 void TicTacToe::PrintBoard() const {
-    std::cout << "━━━━━━━━━━━━━" << std::endl;
+    std::cout << " Play Board: " << "\t\t\t\t\t" << " Ref Board: " << std::endl;
+    std::cout << "━━━━━━━━━━━━━" << "\t\t\t\t\t" << "━━━━━━━━━━━━━" << std::endl;
+
 
     for (unsigned int i = 0; i < 3; ++i) {
         for (unsigned j = 0; j < 3; ++j) {
             if (j == 0)
                 std::cout << "┃";
-            std::cout << ' ' << board_[i][j] << ' ';
-            std::cout << "┃";
+            std::cout << ' ' << board_[i][j] << ' ' << "┃";
+
+            // if (j = 2) {
+            //     std::cout <<'┃'<<' '<<'X'<<' '<<'┃' <<'┃'<<' '<<'X'<<' '<<'┃' <<'┃'<<' '<<'X'<<' '<<'┃'
+            // }
         }
+        std::cout << "\t\t\t\t\t";
+        std::cout <<"┃"<<' '<<1+(i*3)<<' '<<"┃"<<' '<<2+(i*3)<<' '<<"┃"<<' '<<3+(i*3)<<' '<<"┃";
         std::cout << std::endl;
-        std::cout << "━━━━━━━━━━━━━" << std::endl;
+        std::cout << "━━━━━━━━━━━━━" << "\t\t\t\t\t" << "━━━━━━━━━━━━━" << std::endl;
     }
+
 }
 
 // Printing error message function (Invalid move / Already occupied space)
