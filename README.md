@@ -1,9 +1,19 @@
 # TicTacToe-Terminal
 
 
-Run instructions:
+## Run instructions:
 
-    * In terminal commands * 
-        cd bin
-        make
-        ./game
+#### In terminal commands 
+    
+```bash
+cd TicTacToe-Terminal
+```
+```bash
+make
+```
+```bash
+cd bin
+```
+```bash
+./game
+```
